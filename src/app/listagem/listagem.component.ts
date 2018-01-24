@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { FotoService } from '../servicos/foto.service';
 
 @Component({
   selector: 'cp-listagem',
@@ -9,11 +10,12 @@ import { Http } from '@angular/http';
 export class ListagemComponent implements OnInit {
   titulo = 'CaelumPic'
   listaFotos = []
-  
-  constructor(ajax: Http){
-    ajax.get("http://localhost:3000/v1/fotos").subscribe
-    (resposta => {this.listaFotos = resposta.json()
-    }) 
+
+  constructor(servico: FotoService) {
+    servico.listar
+    resposta => {
+    this.listaFotos = resposta.json()
+    }
   }
 
   ngOnInit() {

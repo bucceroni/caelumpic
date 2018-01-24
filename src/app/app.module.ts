@@ -11,6 +11,7 @@ import { PainelModule } from './painel/painel.module';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { ListagemComponent } from './listagem/listagem.component';
 import { roteamento } from './app.routes';
+import { FotoService} from './servicos/foto.service';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { roteamento } from './app.routes';
     roteamento,
     HttpClientModule
   ],
-  providers: [],
+  providers: [FotoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
