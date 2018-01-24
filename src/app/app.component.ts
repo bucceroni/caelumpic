@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
-  template: '<cp-listagem></cp-listagem>',
+  template: '<router-outlet></router-outlet>',
 })
 
 export class AppComponent {

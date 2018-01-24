@@ -1,9 +1,13 @@
 <header class="jumbotron">
     <h1 class="text-center">{{titulo}}</h1>
-    <cp-cadastro></cp-cadastro>
 </header>
 
 <main class="container">
+    <div class="row">
+        <div class="col-sm-12 mb-4">
+            <a [routerLink]="['/cadastro']" class="btn btn-ptimary">Nova Foto</a>
+        </div>
+    </div>
     <div class="row">
         <painel *ngFor="let foto of listaFotos" titulo="{{foto.titulo}}" class="col-md-2">
             <foto url="{{foto.url}}" titulo="{{foto.titulo}}"></foto>
