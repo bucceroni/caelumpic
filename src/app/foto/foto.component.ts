@@ -1,13 +1,12 @@
-import { Component, Input } from "@angular/core";
-
+import { Component, Input } from "@angular/core"
 
 @Component({
     selector: 'foto',
-    template: `<img src="{{url}}" class="img-fluid" alt="{{titulo}}">`
-})
-
-export class FotoComponent{
-    @Input() titulo: string 
+    template: `<img [alt]="titulo" src="{{url}}" class="img-fluid" alt="">` 
+}) 
+export class FotoComponent {
+    @Input() titulo:string = ""
     @Input() url = ""
-            descricao
-}   
+             descricao = ""
+             _id
+}

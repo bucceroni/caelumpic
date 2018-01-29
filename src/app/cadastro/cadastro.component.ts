@@ -1,37 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { FotoComponent } from '../foto/foto.component';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-
+import { FotoService } from '../servicos/foto.service';
 
 @Component({
   selector: 'cp-cadastro',
   templateUrl: './cadastro.component.html',
   styles: []
 })
-
 export class CadastroComponent implements OnInit {
 
-  foto = new FotoComponent()
+    foto = new FotoComponent()
 
+    constructor(private servico: FotoService) {}
 
-  constructor(private ajax: HttpClient) { }
+    ngOnInit() {}
 
-  ngOnInit() {
+    salvar(){
+        this.servico
+            .cadastrar(this.foto)
+            .subscribe(
+                () => this.foto = new FotoComponent()
+                , erro => console.log(erro)
+            ) 
+    }
 
-  }
-
-  salvar() {
-    const opcoesHttp = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
-
-    this.ajax.post(
-      'http://localhost:3000/v1/fotos'
-      , JSON.stringify(this.foto)
-      , opcoesHttp
-    )
-
-      .subscribe(
-        () => this.foto = new FotoComponent()
-        , erro => console.log(erro)
-      )
-  }
 }
