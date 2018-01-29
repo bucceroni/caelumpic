@@ -14,19 +14,27 @@ export class ListagemComponent implements OnInit {
     constructor(private servico: FotoService) {
 
         servico.listar()
-                .subscribe(
-                    fotosApi => this.listaFotos = fotosApi
-                    , erro => console.log(erro)
-                )
+            .subscribe(
+            fotosApi => this.listaFotos = fotosApi
+            , erro => console.log(erro)
+            )
     }
-    
-    ngOnInit() {}
 
-    remover(foto: FotoComponent){
-        
+    ngOnInit() { }
+
+    remover(foto: FotoComponent) {
+
         this.servico.deletar(foto)
-                    .subscribe(
-                        () => console.log(`apagouuuuu ${foto.titulo}`)
-                    )
+            .subscribe(
+
+            () => {
+                this.listaFotos = this.listaFotos.filter(fotoFilter => (fotoFilter != foto))
+                console.log(`apagouuuuu ${foto.titulo}`)
+            }
+            ,
+            erro => {
+                console.log(`apagouuuuu algo de errado aconteceu`)
+            }
+            )
     }
 }
