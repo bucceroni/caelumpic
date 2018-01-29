@@ -46,15 +46,14 @@ export class CadastroComponent implements OnInit {
             this.servico.alterar(this.foto)
                 .subscribe(
                     mensagemServico => {
-                    this.mensagem = mensagemServico.
-                    this.roteador.navigate([''])
+                        this.mensagem = mensagemServico.texto
+                        this.roteador.navigate([''])
                     }
                     , erro => console.log(erro)
                 )
         
         }else{
-            this.servico
-            .cadastrar(this.foto)
+            this.servico.cadastrar(this.foto)
                 .subscribe(
                     mensagemServico => {
                         this.mensagem = mensagemServico.texto

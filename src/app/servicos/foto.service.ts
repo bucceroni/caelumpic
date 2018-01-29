@@ -38,7 +38,7 @@ export class FotoService {
         return this.conexaoApi.get<FotoComponent>(this.url + fotoId)
     }
 
-    alterar(foto: FotoComponent): Observable<Object> {
+    alterar(foto: FotoComponent): Observable<Mensagens> {
         return this.conexaoApi.put(
             this.url + foto._id
             , JSON.stringify(foto)
